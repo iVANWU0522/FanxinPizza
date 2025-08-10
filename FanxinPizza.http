@@ -1,0 +1,6 @@
+@FanxinPizza_HostAddress = http://localhost:5222
+
+GET {{FanxinPizza_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

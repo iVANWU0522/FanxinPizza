@@ -1,0 +1,48 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
+{
+	"name": "FanxinPizza Dev Container",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	// Mount your project at a single, clear location
+	"workspaceMount": "source=${localWorkspaceFolder},target=/FanxinPizza,type=bind",
+	"workspaceFolder": "/FanxinPizza",
+	// Mount your project and persist NuGet cache across rebuilds
+	"mounts": [
+		"source=nuget-cache,target=/root/.nuget,type=volume"
+	],
+	// Give the running container a predictable name like "<folder>-devcontainer"
+	"runArgs": [
+		"--name",
+		"${localWorkspaceFolderBasename}-devcontainer"
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csharp",
+				"editorconfig.editorconfig"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.fixAll": true,
+					"source.organizeImports": true
+				},
+				"omnisharp.enableEditorConfigSupport": true,
+				"dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+			}
+		}
+	},
+	// Handy port hints in VS Code
+	"forwardPorts": [
+		5027
+	],
+	"portsAttributes": {
+		"5027": {
+			"label": "ASP.NET HTTP"
+		}
+	},
+	// Only restore if there is a solution file
+	"postCreateCommand": "bash -lc 'find . -maxdepth 3 -name \"*.sln\" -print0 | xargs -0 -r -I{} dotnet restore {}'"
+}
