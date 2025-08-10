@@ -4,3 +4,13 @@ GET {{FanxinPizza_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{ContosoPizza_HostAddress}}/pizza/
+Accept: application/json
+
+###
+
+GET {{ContosoPizza_HostAddress}}/pizza/1
+Accept: application/json
+
+###
